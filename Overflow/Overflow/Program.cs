@@ -200,5 +200,21 @@ namespace Overflow
             count = 0;
         }
         #endregion
+
+        public void printHash()
+        {
+            Info[,] temp = array;
+
+            Console.WriteLine("HashTable Hiện Tại:");
+            for (int i = 0; i < temp.GetLength(0); i++)
+            {
+                for(int j =0; j< temp.GetLength(1); j++)
+                if (temp[i,j] != null)
+                {
+                    Console.WriteLine("key = " + temp[i,j].Key + ", val = " + temp[i,j].Value);
+                }
+            }
+            Console.WriteLine();
+        }
     }
 }
