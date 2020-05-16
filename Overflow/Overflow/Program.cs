@@ -10,23 +10,18 @@ namespace Overflow
     {
         static void Main(string[] args)
         {
-            Overflow_areas collision = new Overflow_areas();
-            System.Console.WriteLine(collision.size);
-            collision.Add("nguyen", "thanh tan");
-            collision.Add("xin", "Chao");
-            System.Console.WriteLine(collision.size);
-            foreach (var item in collision.Keys)
-            {
-                System.Console.WriteLine(item);
-            }
-            System.Console.WriteLine(collision.GetValue("nguyen"));
-            System.Console.WriteLine(collision.GetValue("xin"));
+            Console.OutputEncoding = Encoding.UTF8;
+            Overflow_areas ht = new Overflow_areas();
+            ht.Add("tan", "187pm20569");
+            ht.Add("Binh", "187pm99999");
 
-            //collision.Add(31, "31");
-            //collision.Add(21, "21");
-            //Console.WriteLine(collision.GetValue(31));
-            //Console.WriteLine(collision.GetValue(21));
+            ht.printHash();
 
+            Console.WriteLine(ht.GetValue("tan"));
+            ht.Clear();
+
+            Console.WriteLine();
+            ht.printHash();
         }
     }
 
@@ -44,6 +39,7 @@ namespace Overflow
         public int size;
         public int NumberOfArray;
         public int count;
+
         #region Get all Keys from list HashTables
         public object[] Keys { get => GetKeys().ToArray(); }
         public IEnumerable<object> GetKeys()
@@ -81,7 +77,7 @@ namespace Overflow
         #endregion
 
         #region Hash key to index of array
-        public int HashCode(object key)
+        public int HashCode(object key) // 187pm20569
         {
             var sum = 0;
             var arrChars = key.ToString().ToCharArray();
@@ -89,9 +85,8 @@ namespace Overflow
             {
                 sum += arrChars[i] + (i + 1);
             }
-            int hashcode = sum.GetHashCode();
+            int hashcode = sum.GetHashCode(); 
             return (hashcode % size);
-
         }
         #endregion
 
@@ -155,6 +150,7 @@ namespace Overflow
                     return;
                 }
             }
+            array[IndexOfArray, index] = null;
             Console.WriteLine("Xóa thành công");
             count--;
         }
