@@ -11,21 +11,21 @@ namespace Overflow
         static void Main(string[] args)
         {
             Overflow_areas collision = new Overflow_areas();
-            //System.Console.WriteLine(collision.size);
-            //collision.Add("nguyen", "thanh tan");
-            //collision.Add("xin", "Chao");
-            //System.Console.WriteLine(collision.size);
-            //foreach (var item in collision.Keys)
-            //{
-            //    System.Console.WriteLine(item);
-            //}
-            //System.Console.WriteLine(collision.GetValue("nguyen"));
-            //System.Console.WriteLine(collision.GetValue("xin"));
+            System.Console.WriteLine(collision.size);
+            collision.Add("nguyen", "thanh tan");
+            collision.Add("xin", "Chao");
+            System.Console.WriteLine(collision.size);
+            foreach (var item in collision.Keys)
+            {
+                System.Console.WriteLine(item);
+            }
+            System.Console.WriteLine(collision.GetValue("nguyen"));
+            System.Console.WriteLine(collision.GetValue("xin"));
 
-            collision.Add(31, "31");
-            collision.Add(21, "21");
-            Console.WriteLine(collision.GetValue(31));
-            Console.WriteLine(collision.GetValue(21));
+            //collision.Add(31, "31");
+            //collision.Add(21, "21");
+            //Console.WriteLine(collision.GetValue(31));
+            //Console.WriteLine(collision.GetValue(21));
 
         }
     }
@@ -83,15 +83,14 @@ namespace Overflow
         #region Hash key to index of array
         public int HashCode(object key)
         {
-            //var sum = 0;
-            //var arrChars = key.ToString().ToCharArray();
-            //for (int i = 0; i < arrChars.Length; i++)
-            //{
-            //    sum += arrChars[i] + (i + 1);
-            //}
-            //return sum % 46104728;
-
-            return (int)key % 10;
+            var sum = 0;
+            var arrChars = key.ToString().ToCharArray();
+            for (int i = 0; i < arrChars.Length; i++)
+            {
+                sum += arrChars[i] + (i + 1);
+            }
+            int hashcode = sum.GetHashCode();
+            return (hashcode % size);
 
         }
         #endregion
